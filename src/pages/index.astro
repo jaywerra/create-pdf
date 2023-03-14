@@ -1,81 +1,129 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Card from '../components/Card.astro';
+import spreadImage from "../images/image-one.jpg";
 ---
 
 <Layout title="Welcome to Astro.">
 	<main>
-		<h1>Welcome to <span class="text-gradient">Astro</span></h1>
-		<p class="instructions">
-			To get started, open the directory <code>src/pages</code> in your project.<br />
-			<strong>Code Challenge:</strong> Tweak the "Welcome to Astro" message above.
-		</p>
-		<ul role="list" class="link-card-grid">
-			<Card
-				href="https://docs.astro.build/"
-				title="Documentation"
-				body="Learn how Astro works and explore the official API docs."
-			/>
-			<Card
-				href="https://astro.build/integrations/"
-				title="Integrations"
-				body="Supercharge your project with new frameworks and libraries."
-			/>
-			<Card
-				href="https://astro.build/themes/"
-				title="Themes"
-				body="Explore a galaxy of community-built starter themes."
-			/>
-			<Card
-				href="https://astro.build/chat/"
-				title="Community"
-				body="Come say hi to our amazing Discord community. ❤️"
-			/>
-		</ul>
+		<div class="container">
+			<div class="controls">
+				<button class="button">Print PDF</button>
+			</div>
+			<div class="cards">
+				<div class="card">
+					<div class="card-img">
+						<img src={spreadImage} alt=""/>
+					</div>
+					<div class="card-thumbs">
+						<div class="card-thumb">
+							<img src={spreadImage} alt=""/>
+						</div>
+						<div class="card-thumb">
+							<img src={spreadImage} alt=""/>
+						</div>
+						<div class="card-thumb">
+							<img src={spreadImage} alt=""/>
+						</div>
+						<div class="card-thumb">
+							<img src={spreadImage} alt=""/>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 	</main>
 </Layout>
 
+<script src="../scripts/createPdf.js"></script>
+
 <style>
-	main {
-		margin: auto;
-		padding: 1.5rem;
-		max-width: 60ch;
+	@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+
+	:root {
+	--border: 1px solid #000;
 	}
-	h1 {
-		font-size: 3rem;
-		font-weight: 800;
+
+	body {
+		background: #faf2e8;
+		font-family: "Poppins", sans-serif;
+		font-size: 16px;
+		min-height: 100svh;
+	}
+
+	img {
+		display: block;
+		height: auto;
+		width: 100%;
+	}
+
+	h2 {
 		margin: 0;
+		font-size: 1.6rem;
+		font-weight: 300;
 	}
-	.text-gradient {
-		background-image: var(--accent-gradient);
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-		background-size: 400%;
-		background-position: 0%;
+
+	.container {
+		margin: 0 auto;
+		max-width: 1400px;
+		padding: 2rem;
 	}
-	.instructions {
-		line-height: 1.6;
-		margin: 1rem 0;
-		border: 1px solid rgba(var(--accent), 25%);
-		background-color: white;
-		padding: 1rem;
-		border-radius: 0.4rem;
+
+	.controls {
+		display: flex;
+		justify-content: flex-end;
 	}
-	.instructions code {
-		font-size: 0.875em;
-		font-weight: bold;
-		background: rgba(var(--accent), 12%);
-		color: rgb(var(--accent));
-		border-radius: 4px;
-		padding: 0.3em 0.45em;
+
+	.button {
+		display: inline-block;
+		padding: 0.45rem 1rem;
+		background: none;
+		border: var(--border);
+		box-shadow: inset -1px -1px 0 0 #000, inset 1px 1px 0 0 #fff, 5px 5px 0 #0003;
+		cursor: pointer;
+		font-size: 0.85rem;
+		font-weight: 500;
+		letter-spacing: 1px;
 	}
-	.instructions strong {
-		color: rgb(var(--accent));
+
+	.cards {
+		margin: 2rem 0 0 auto;
+		max-width: 900px;
+		width: 90%;
 	}
-	.link-card-grid {
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
-		gap: 1rem;
-		padding: 0;
+
+	.card {
+		display: flex;
+		flex-direction: column;
+		border: var(--border);
+		box-shadow: inset -1px -1px 0 0 #000, inset 1px 1px 0 0 #fff, 8px 8px 0 #0003;
 	}
+
+	.card-img {
+		position: relative;
+		margin: 0.5rem;
+		aspect-ratio: 16 / 9;
+		border: var(--border);
+		overflow: hidden;
+	}
+
+	.card-thumbs {
+		display: flex;
+		justify-content: space-between;
+		padding: 0 0.25rem 0.5rem;
+	}
+
+	.card-thumb {
+		margin: 0 0.25rem;
+		width: calc(25% - 0.25rem);
+		height: 150px;
+		border: var(--border);
+	}
+
+	.card-thumb img {
+		object-fit: cover;
+		height: 100%;
+		aspect-ratio: 16 / 9;
+	}
+
 </style>
