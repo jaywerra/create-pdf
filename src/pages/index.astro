@@ -1,7 +1,10 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Card from '../components/Card.astro';
-import spreadImage from "../images/image-one.jpg";
+import imageOne from "../images/image-one.jpg";
+import imageTwo from "../images/image-two.jpg";
+import imageThree from "../images/image-three.jpg";
+import imageFive from "../images/image-five.jpg";
 ---
 
 <Layout title="Welcome to Astro.">
@@ -13,20 +16,20 @@ import spreadImage from "../images/image-one.jpg";
 			<div class="cards">
 				<div class="card">
 					<div class="card-img">
-						<img src={spreadImage} alt=""/>
+						<img src={imageFive} alt=""/>
 					</div>
 					<div class="card-thumbs">
 						<div class="card-thumb">
-							<img src={spreadImage} alt=""/>
+							<img src={imageTwo} alt=""/>
 						</div>
 						<div class="card-thumb">
-							<img src={spreadImage} alt=""/>
+							<img src={imageThree} alt=""/>
 						</div>
 						<div class="card-thumb">
-							<img src={spreadImage} alt=""/>
+							<img src={imageFive} alt=""/>
 						</div>
 						<div class="card-thumb">
-							<img src={spreadImage} alt=""/>
+							<img src={imageOne} alt=""/>
 						</div>
 					</div>
 				</div>
@@ -105,6 +108,12 @@ import spreadImage from "../images/image-one.jpg";
 		aspect-ratio: 16 / 9;
 		border: var(--border);
 		overflow: hidden;
+	}
+
+	.card-img img {
+		height: 100%;
+		object-fit: cover;
+		object-position: center;
 	}
 
 	.card-thumbs {
