@@ -11,10 +11,13 @@
   },
   "dependencies": {
     "astro": "^2.0.18",
+    "chrome-aws-lambda": "^10.1.0",
     "dom-to-image": "^2.6.0",
     "dom-to-pdf": "^0.3.2",
+    "dotenv": "^16.0.3",
     "file-saver": "^2.0.5",
     "html2canvas": "^1.4.1",
-    "jspdf": "^2.5.1"
+    "jspdf": "^2.5.1",
+    "puppeteer-core": "^19.7.5"
   }
 }

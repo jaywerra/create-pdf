@@ -1,6 +1,7 @@
 import html2canvas from 'html2canvas';
 import { jsPDF } from "jspdf";
 import domtoimage from 'dom-to-image';
+
 const printButton = document.querySelector(".button");
 const elementToPrint = document.querySelector(".container");
 
@@ -23,7 +24,7 @@ function printPDF () {
         let height = pdf.internal.pageSize.getHeight();
 
         pdf.addImage(img, 0, 0, width, height);
-        pdf.save('your-filename.pdf')
+        pdf.save('map.pdf')
     })
 }
 
@@ -55,4 +56,4 @@ function downloadMap () {
     });
 }
 
-printButton.addEventListener("click", printPDF);
+printButton.addEventListener("click", downloadMap);
